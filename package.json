@@ -1,7 +1,32 @@
 {
-  "name": "reacttt",
+  "name": "cra-template-reacttt",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "author": "Milton De León <miltondeleon1996@gmail.com",
+  "main": "template.json",
+  "description": "A quick start Create React App template with React Router, TypeScript and TailwindCSS",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "cra-template",
+    "template",
+    "react-router",
+    "react-router-dom",
+    "typescript",
+    "tailwindcss"
+  ],
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miltondl96/reacttt",
+    "directory": "/"
+  },
+  "bugs": {
+    "url": "https://github.com/miltondl96/reacttt/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -10,16 +35,26 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "tailwindcss": "^1.4.6",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "npm-run-all -p start:css start:js",
+    "build": "npm-run-all build:css build:js",
+    "start:js": "react-scripts start",
+    "build:js": "react-scripts build",
+    "start:css": "postcss src/styles/tailwind.own.css -o src/tailwind.css -w",
+    "build:css": "postcss src/styles/tailwind.own.css -o src/tailwind.css --env production",
+    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp .eslintrc template/",
+    "prepublishOnly": "npm-run-all clean-files copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +70,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
