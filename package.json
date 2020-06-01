@@ -51,10 +51,7 @@
     "start:js": "react-scripts start",
     "build:js": "react-scripts build",
     "start:css": "postcss src/styles/tailwind.own.css -o src/tailwind.css -w",
-    "build:css": "postcss src/styles/tailwind.own.css -o src/tailwind.css --env production",
-    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc",
-    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp .eslintrc template/",
-    "prepublishOnly": "npm-run-all clean-files copy-files"
+    "build:css": "postcss src/styles/tailwind.own.css -o src/tailwind.css --env production"
   },
   "eslintConfig": {
     "extends": "react-app"
